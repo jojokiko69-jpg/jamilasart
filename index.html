@@ -1,0 +1,409 @@
+, <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jamila's Portfolio</title>
+    <meta name="description" content="Explore Jamila's luxurious art portfolio, showcasing resilience and passion through modern, fancy designs.">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            margin: 0;
+            color: #f8f8f8; /* Red accent */
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #e74c3c;
+        }
+        .hero {
+            background-image: url('https://via.placeholder.com/1920x600?text=Your+Hero+Art+Image'); /* Replace with your hero art image */
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            margin: 0;
+            z-index: 1;
+            position: relative;
+        }
+        .hero p {
+            font-size: 1.5em;
+            margin: 10px 0 0;
+            z-index: 1;
+            position: relative;
+        }
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .art-piece {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .art-piece:hover {
+            transform: scale(1.05);
+        }
+        .art-piece img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .art-piece .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.8);
+            color: #ffffff;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        .art-piece:hover .overlay {
+            transform: translateY(0);
+        }
+        .about, .book, .podcast, .contact {
+            text-align: center;
+            background-color: #f8f8f8;
+            border-radius: 10px;
+            margin: 40px 0;
+            padding: 60px 20px;
+        }
+        .about h3, .book h3, .podcast h3, .contact h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+        .about p, .book p, .podcast p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        .book .details, .podcast .episodes {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .book-item, .episode {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            max-width: 320px;
+            text-align: left;
+            transition: transform 0.3s;
+        }
+        .book-item:hover, .episode:hover {
+            transform: translateY(-5px);
+        }
+        .book-item img, .episode img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .book-item h4, .episode h4 {
+            font-family: 'Playfair Display', serif;
+            color: #000000;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        .book-item a, .episode a {
+            color: #e74c3c;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+        .book-item a:hover, .episode a:hover {
+            color: #000000;
+        }
+        .contact a {
+            color: #e74c3c;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2em;
+        }
+        .contact a:hover {
+            color: #000000;
+        }
+        footer {
+            background-color: #000000;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5em;
+            }
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            .book .details, .podcast .episodes {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Jamila's Portfolio</h1>
+            <nav>
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#book">Book</a>
+                <a href="#podcast">Podcast</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="hero" style=" 
+    background-image: url('coverocean.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    color: white;
+">
+    <div style="text-align: center; padding: 20px 40px;">
+        <h2>jamila's art</h2>
+        <p>Discover pieces that embody resilience and passion.</p>
+    </div>
+</section>
+
+
+    
+        
+    <section id="about" class="about">
+        <h3>About Me</h3>
+        <p>Hi, I’m Jamila a writer, podcaster, artist, and lifelong creator. Ever since I was young, I’ve been fascinated by stories, ideas, and the ways we can use creativity to connect with others and make a difference. That curiosity led me to explore multiple forms of expression: from writing and podcasting to visual art and social projects.<br>I also love exploring STEM and creative problem-solving, proving to myself and others that curiosity has no boundaries and that art and science can thrive together. Everything I do is connected by one simple idea: using my skills and passions to inspire, create, and leave a positive mark.</p>
+        <p style="font-style: italic; font-size: 1.3em; color: #e74c3c;">"Art is not just creation; it's survival, rebirth, and boundless passion."</p>
+    </section>
+
+    <section id="gallery" class="section">
+        <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-size: 3em; margin-bottom: 40px;">Gallery</h2>
+        <div class="gallery">
+            <!-- Replace with your actual art images and links from jamilasart.carrd.co -->
+            <div class="art-piece">
+                <img src="TABLEAUX 4.jpg" alt="Art Piece 1">
+                <div class="overlay">
+                    <h4>african hope</h4>
+                    <p>Medium: Acrylic on Canvas<br>Size: 30x60 cm<br><a href="TABLEAUX 4.jpg" target="_blank" style="color: #778DA9;">View Full Details</a></p>
+                </div>
+            </div>
+            <div class="art-piece">
+                <img src="Sadsinger.jpg" alt="Art Piece 2">
+                <div class="overlay">
+                    <h4>GUIMAN</h4>
+                    <p>Medium: Acrylic on canvas<br>Size: 30x60 cm<br><a href="Sadsinger.jpg" target="_blank" style="color: #778DA9;">View Full Details</a></p>
+                </div>
+            </div>
+            <div class="art-piece">
+                <img src="future2.jpg" alt="Art Piece 3">
+                <div class="overlay">
+                    <h4>future2</h4>
+                    <p>Medium: acrylic on canvas<br>Size: 30x60 cm<br><a href="future2.jpg" target="_blank" style="color: #778DA9;">View Full Details</a></p>
+                </div>
+            </div>
+             <div class="art-piece">
+                <img src="book.jpg" alt="Art Piece 1">
+                <div class="overlay">
+                    <h4>mina</h4>
+                    <p>Medium: Acrylic on Canvas<br>Size: 25x30 cm<br><a href="book.jpg" target="_blank" style="color: #778DA9;">View Full Details</a></p>
+                </div>
+            </div>
+            <div class="art-piece">
+                <img src="diving.jpg" alt="Art Piece 2">
+                <div class="overlay">
+                    <h4>Diving</h4>
+                    <p>Medium: Acrylic on canvas<br>Size: 30x60 cm<br><a href="diving.jpg" target="_blank" style="color: #778DA9;">View Full Details</a></p>
+                </div>
+            </div>
+            <div class="art-piece">
+                <img src="abury.jpg" alt="Art Piece 3">
+                <div class="overlay">
+                    <h4>resilience</h4>
+                    <p>Medium: acrylic on canvas<br>Size: 30x60 cm<br><a href="abury.jpg" target="_blank" style="color: #778DA9;">View Full Details</a></p>
+                </div>
+            </div>
+
+            <div class="art-piece">
+                <img src="cries.jpg" alt="Art Piece 1">
+                <div class="overlay">
+                    <h4>souffrance</h4>
+                    <p>Medium: Acrylic on Canvas<br>Size: 25x30 cm<br><a href="cries.jpg" target="_blank" style="color: #778DA9;">View Full Details</a></p>
+                </div>
+            </div>
+            <div class="art-piece">
+                <img src="bignose.jpg" alt="Art Piece 2">
+                <div class="overlay">
+                    <h4>sirine</h4>
+                    <p>Medium: Acrylic on canvas<br>Size: 30x60 cm<br><a href="bignose.jpg" target="_blank" style="color: #778DA9;">View Full Details</a></p>
+                </div>
+            </div>
+            <div class="art-piece">
+                <img src="redhope.jpg" alt="Art Piece 3">
+                <div class="overlay">
+                    <h4>right sight</h4>
+                    <p>Medium: acrylic on canvas<br>Size: 30x50 cm<br><a href="redhope.jpg" target="_blank" style="color: #778DA9;">View Full Details</a></p>
+                </div>
+            </div>
+
+                <div class="art-piece">
+                <img src="fear.jpg" alt="Art Piece 1">
+                <div class="overlay">
+                    <h4>FUTURE1</h4>
+                    <p>Medium: Acrylic on Canvas<br>Size: 25x30 cm<br><a href="fear.jpg" target="_blank" style="color: #778DA9;">View Full Details</a></p>
+                </div>
+            </div>
+            <div class="art-piece">
+                <img src="androgene.jpg" alt="Art Piece 2">
+                <div class="overlay">
+                    <h4>androgene</h4>
+                    <p>Medium: Acrylic on canvas<br>Size: 30x50 cm<br><a href="androgene.jpg" target="_blank" style="color: #778DA9;">View Full Details</a></p>
+                </div>
+            </div>
+            <div class="art-piece">
+                <img src="losted.jpg" alt="Art Piece 3">
+                <div class="overlay">
+                    <h4>losted</h4>
+                    <p>Medium: acrylic on canvas<br>Size: 30x60 cm<br><a href="losted.jpg" target="_blank" style="color: #778DA9;">View Full Details</a></p>
+                </div>
+            </div>
+            </div>
+            
+            
+    
+
+    <section id="book" class="book">
+        <h3>My Book</h3>
+        <p>Zubeida Qaryous is a powerful portrait of a young woman fighting to live on her own terms in a world determined to control her. Born into a strict family and thrown into adulthood through a marriage she never chose, Zubeida learns to navigate the harsh realities of tradition, expectation, and survival.
+Through her battles with family pressure, addiction within her home, and the suffocating weight of judgment, she begins a quiet but courageous rebellion a search for identity and freedom.
+A short novel with a deep emotional resonance, Zubeida Qaryous speaks to anyone who has ever questioned their place in society, or dared to believe in a life beyond the rules written for them.</p>
+        <div class="details">
+            <!-- Replace with your actual book details -->
+            <div class="book-item">
+                <img src="book cover.jpg" alt="Book Cover">
+                <h4>زَبِـيـــدَة قَـرْيُــوس</h4>
+                <p>Published 2023. Available in digital formats.</p>
+                
+                <a href="https://foulabook.com/ar/book/%D9%83%D8%AA%D8%A7%D8%A8-%D8%B2%D8%A8%D9%8A%D8%AF%D8%A9-%D9%82%D8%B1%D9%8A%D9%88%D8%B3-pdf" target="_blank">Read Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="podcast" class="podcast">
+        <h3>My Podcast</h3>
+        <p>Dive into conversations that explore resilience, passion, and the creative process. Each episode is a journey of inspiration and insight.</p>
+        <div class="episodes">
+            <!-- Replace with your actual podcast episodes -->
+            <div class="episode">
+                <img src="podcat epi.jpg" alt="Episode 1">
+                <h4>Episode 1: chickxulub</h4>
+                <p>If you’ve ever wondered how a single impact could unleash extinction and shape the world we live in now, “chikchulub” will leave you awed, unsettled, and a little more humble in the face of cosmic time.</p>
+                <a href="https://open.spotify.com/episode/5U0QlB4iglac6AIxlZYy7J?si=c1BTKQVNQjCyi7BqGS8zWg" target="_blank">Listen Now</a>
+            </div>
+            <div class="episode">
+                <img src="podcast epi2.jpg" alt="Episode 2">
+                <h4>Episode 2: brain fuel</h4>
+                <p>What really powers our minds? In this episode, EartaJ serves up a deep-dive into the invisible forces that energize the brain . From nutrition and neural chemistry to curiosity and the mysteries of consciousness.</p>
+                <a href="https://open.spotify.com/episode/7z7GOrvEeSEELLjUfWqvB4?si=VzZP5AgNSB6DFA2jBwGHBA" target="_blank">Listen Now</a>
+            </div>
+            <!-- Add more episodes as needed -->
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+    <h3>Contact Me</h3>
+    <p>For commissions, collaborations, or inquiries, reach out via email:</p>
+    <a href="mailto:samirjamila2008@gmail.com" aria-label="Email Samir Jamila">samirjamila2008@gmail.com</a>
+</section>
+
+
+    <footer>
+        <p>&copy; 2025 Jamila SAMIR. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
